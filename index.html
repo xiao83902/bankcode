@@ -5561,7 +5561,7 @@ function fuzzySearch(query) {
             let matched = variants.some(v => bank.name.includes(v));
             if (!matched && (bank.name.includes('農會') || bank.name.includes('漁會'))) {
                 let sn = bank.name;
-                ['鄉農會','鎮農會','區農會','市農會','鄉漁會','鎮漁會','區漁會','市漁會'].forEach(s => { sn = sn.replace(s, bank.name.includes('農會')?'農會':'漁會'); });
+                ['地區農會','鄉農會','鎮農會','區農會','市農會','鄉漁會','鎮漁會','區漁會','市漁會'].forEach(s => { sn = sn.replace(s, bank.name.includes('農會')?'農會':'漁會'); });
                 sn = sn.replace('分部','');
                 matched = variants.some(v => { let sv = v; ['鄉','鎮','區','市','分部'].forEach(s => { sv = sv.replace(s,''); }); return sv && sn.includes(sv); });
             }
@@ -5608,7 +5608,7 @@ function performSearch() {
 
 function renderResults(results, query) {
     if (!results.length) {
-        resultsDiv.innerHTML = `<div class="no-results"><h3>找不到符合「${esc(query)}」的結果</h3><p>試試其他關鍵字，例如：羅東一銀、板橋合庫、0072610</p></div>`;
+        resultsDiv.innerHTML = `<div class="no-results"><h3>找不到符合「${esc(query)}」的結果</h3><p>試試其他關鍵字，例如：羅東一銀、某某地區農會、0172288</p></div>`;
         return;
     }
     const max = 20, show = Math.min(results.length, max);
